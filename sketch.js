@@ -17,7 +17,7 @@ function setup() {
     ob1.velocityY = -2;
     ob2.velocityX =-2;
     ob2.velocityY = 2;
-   // edges=createEdgeSprites();
+  
 }
 
 function draw() {
@@ -35,17 +35,13 @@ function draw() {
    }
     console.log(ob1.velocityX ,ob1.velocityY ,ob2.velocityX, ob2.velocityY )
     bounceOff(ob1,ob2);
-    // bounceOff(ob1,edges);
-    // bounceOff(ob2,edges);
     drawSprites();
 }
 
 function isTouching(a, b){
-    var a,b;
-    if (a.x - b.x < b.width / 2 + a.width / 2
-        && b.x - a.x < b.width / 2 + a.width / 2
-        && a.y - b.y < b.height / 2 + a.height / 2
-        && b.y - a.y < b.height / 2 + a.height / 2) {
+   
+    if (a.x - b.x < b.width / 2 + a.width / 2 && b.x - a.x < b.width / 2 + a.width / 2
+        && a.y - b.y < b.height / 2 + a.height / 2 && b.y - a.y < b.height / 2 + a.height / 2) {
        
         return true;
     }
@@ -57,29 +53,24 @@ function isTouching(a, b){
 
 function bounceOff(a, b) {
   
-    if (a.x - b.x <= b.width / 2 + a.width / 2
-        && b.x - a.x <= b.width / 2 + a.width / 2
-        && (a.y - b.y == b.height / 2 + a.height / 2
-        || b.y - a.y == b.height / 2 + a.height / 2)) {
-
-        a.velocityY = -a.velocityY;
-        b.velocityY = -b.velocityY;
-    }
-    else if ((a.x - b.x == b.width / 2 + a.width / 2
-        || b.x - a.x == b.width / 2 + a.width / 2)
-        && a.y - b.y <= b.height / 2 + a.height / 2
-        && b.y - a.y <= b.height / 2 + a.height / 2) {
-
-        a.velocityX = -a.velocityX;
-        b.velocityX = -b.velocityX;
-    }
-    else if ((a.x - b.x == b.width / 2 + a.width / 2
-        || b.x - a.x == b.width / 2 + a.width / 2)
-        && (a.y - b.y == b.height / 2 + a.height / 2
-        || b.y - a.y == b.height / 2 + a.height / 2)) {
+   if ((a.x - b.x == b.width / 2 + a.width / 2 || b.x - a.x == b.width / 2 + a.width / 2)
+        && (a.y - b.y == b.height / 2 + a.height / 2 || b.y - a.y == b.height / 2 + a.height / 2)) {
         a.velocityY = -a.velocityY;
         b.velocityY = -b.velocityY;
         a.velocityX = -a.velocityX;
         b.velocityX = -b.velocityX;
     }
+    else if (a.x - b.x <= b.width / 2 + a.width / 2 && b.x - a.x <= b.width / 2 + a.width / 2
+        && (a.y - b.y == b.height / 2 + a.height / 2 || b.y - a.y == b.height / 2 + a.height / 2)) {
+
+        a.velocityY = -a.velocityY;
+        b.velocityY = -b.velocityY;
+    }
+    else if ((a.x - b.x == b.width / 2 + a.width / 2 || b.x - a.x == b.width / 2 + a.width / 2)
+        && a.y - b.y <= b.height / 2 + a.height / 2  && b.y - a.y <= b.height / 2 + a.height / 2) {
+
+        a.velocityX = -a.velocityX;
+        b.velocityX = -b.velocityX;
+    }
+    
 }
